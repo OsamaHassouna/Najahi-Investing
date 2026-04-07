@@ -24,9 +24,11 @@ a {
     font: unset;
 }
 
-a:-webkit-any-link:focus-visible {
+a:focus-visible {
     /* outline: 0px; */
-    outline-color: transparent;
+    /* outline-color: transparent; */
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 3px;
 }
 
 p {
@@ -55,10 +57,30 @@ img {
     border: 0
 }
 
+/* 
+.skip-link:focus,
+.skip-link:focus-visible {
+    position: fixed;
+    inset-block-start: 1rem;
+    inset-inline-start: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    background: white;
+    color: var(--clr-secondary);
+    border-radius: 0.5rem;
+    z-index: 1000;
+} */
+
 /* =================== */
 /* ===== Body ===== */
 html {
     scroll-behavior: smooth;
+    /* scroll-padding-top: 120px; */
 }
 
 body {
@@ -119,6 +141,16 @@ body {
     background-color: var(--clr-primary);
     color: white;
 
+}
+
+.inv-btn:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.inv-btn:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
 }
 
 .inv-tag {
@@ -223,7 +255,7 @@ body {
 
 /* =-=-= Hero =-=-= */
 .inv-hero {
-    min-height: 100vh;
+    min-height: 100svh;
     padding-top: 100px;
     /* padding-block: 161px 100px; */
     display: flex;
@@ -235,6 +267,7 @@ body {
 .hero-wrapper {
     display: grid;
     align-items: center;
+    /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
     grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
     gap: 3rem;
 }
@@ -312,7 +345,7 @@ body {
 
 .hero-img>img {
     grid-row: 1/3;
-    grid-column: 1/1;
+    grid-column: 1 / -1;
     width: 100%;
     object-fit: cover;
     border-radius: 16px;
@@ -320,7 +353,7 @@ body {
 
 .hero-img>.speaker-content {
     grid-row: 2 / 3;
-    grid-column: 1/1;
+    grid-column: 1 / -1;
     align-self: end;
     justify-self: center;
     display: flex;
@@ -421,7 +454,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    min-width: 340px;
+    /* min-width: 340px; */
+    min-width: 0;
 }
 
 .featured-details {
@@ -441,7 +475,8 @@ body {
 .featured-details .featured-logos img {
     flex: 1;
     object-fit: cover;
-    min-width: 340px;
+    /* min-width: 340px; */
+    min-width: min(100%, 240px);
 }
 
 @media screen and (max-width: 1200px) {
@@ -507,7 +542,7 @@ body {
 .inv-what {
     padding-block: 70px;
     background: white;
-    background-image: url('./media/pattern.png');
+    background-image: url('../assets/media/pattern.png');
     background-repeat: no-repeat;
     background-size: 120%;
     background-position: -190px top;
@@ -521,7 +556,7 @@ body {
 }
 
 .inv-what .what-title>h2 {
-    font-size: 55px;
+    font-size: clamp(34px, 5vw, 55px);
     font-weight: 700;
     line-height: 70px;
     text-transform: uppercase;
@@ -704,14 +739,14 @@ body {
     padding-block: 70px;
     background: white;
     text-align: center;
-    background-image: url('./media/pattern.png');
+    background-image: url('../assets/media/pattern.png');
     background-repeat: no-repeat;
     background-size: 120% 100%;
     background-position: -190px top;
 }
 
 .trainer-wrapper>h2 {
-    font-size: 55px;
+    font-size: clamp(34px, 5vw, 55px);
     font-weight: 700;
     line-height: 65px;
     color: var(--clr-dark-gray);
@@ -797,7 +832,7 @@ body {
 }
 
 .testimonials-others-title {
-    font-size: 55px;
+    font-size: clamp(34px, 5vw, 55px);
     font-weight: 700;
     line-height: 72px;
     text-align: center;
@@ -831,7 +866,7 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 33px;
-    font-style: Italic;
+    font-style: italic;
     text-align: center;
     max-width: 28ch;
     margin-inline: auto;
@@ -857,7 +892,7 @@ body {
 
 .inv-testimonials-students .testimonials-students-wrapper>h2 {
     text-align: center;
-    font-size: 55px;
+    font-size: clamp(34px, 5vw, 55px);
     font-weight: 700;
     line-height: 72px;
     color: var(--clr-dark-gray);
@@ -902,6 +937,7 @@ body {
 
 .profile-wrapper {
     display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
     grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
     gap: 2rem;
 }
@@ -954,9 +990,9 @@ body {
 
 .profile-wrapper .profile-content h2 span {
     font-family: 'Manrope';
-    font-size: 72px;
+    font-size: clamp(42px, 8vw, 72px);
     font-weight: 800;
-    line-height: 82px;
+    line-height: 1.1;
     background: linear-gradient(90deg, #FFB690 0%, #C95800 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1024,6 +1060,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .profile-wrapper .profile-content .content-details .features-list li {
@@ -1060,6 +1097,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .footer-wrapper>* {
@@ -1070,6 +1108,7 @@ body {
     display: flex;
     align-items: center;
     gap: 3rem;
+    flex-wrap: wrap;
 }
 
 .footer-links li a {
