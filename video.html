@@ -84,17 +84,14 @@
                             <source src="assets/media/test.webm" type="video/webm" />
                             Your browser does not support the video tag.
                         </video>
-                    </div>
-                    <div class="video-popup" id="video-popup" hidden aria-hidden="true">
-                        <div class="video-popup__backdrop"></div>
-                        <div class="video-popup__dialog" role="dialog" aria-modal="true"
-                            aria-labelledby="video-popup-title">
-                            <h3 id="video-popup-title">You made it to the final section</h3>
-                            <p>This popup is firing automatically for the test video. When the full masterclass is
-                                uploaded, it will appear during the final 15 minutes.</p>
-                            <button type="button" class="inv-btn btn-primary video-popup__close"
-                                id="video-popup-close">Continue Watching</button>
-                        </div>
+                        <a class="video-cta-card" id="video-cta-card" href="https://najahi.com/" target="_blank"
+                            rel="noopener noreferrer" hidden aria-label="Open the next step in a new tab">
+                            <img src="assets/media/hero.webp" alt="" width="320" height="180">
+                            <span class="video-cta-card__caption">
+                                Continue your investing journey
+                                <strong>Open the next step</strong>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -126,8 +123,7 @@
 
     <script>
         const video = document.getElementById('masterclass-video');
-        const popup = document.getElementById('video-popup');
-        const popupCloseButton = document.getElementById('video-popup-close');
+        const ctaCard = document.getElementById('video-cta-card');
 
         if (video) {
             let hasTriggeredFinalWindow = false;
@@ -147,36 +143,19 @@
                 return durationInSeconds - fifteenMinutes;
             }
 
-            function openPopup() {
-                if (!popup) {
+            function showVideoCta() {
+                if (!ctaCard) {
                     return;
                 }
 
-                popup.hidden = false;
-                popup.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('popup-open');
-
-                if (popupCloseButton) {
-                    popupCloseButton.focus();
-                }
-            }
-
-            function closePopup() {
-                if (!popup) {
-                    return;
-                }
-
-                popup.hidden = true;
-                popup.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('popup-open');
-                video.focus();
+                ctaCard.hidden = false;
+                ctaCard.classList.add('is-visible');
             }
 
             function handleFinalWindowReached() {
                 console.log('Final video window reached.');
-                video.pause();
                 document.body.dataset.finalWindowReached = 'true';
-                openPopup();
+                showVideoCta();
             }
 
             video.addEventListener('timeupdate', () => {
@@ -194,29 +173,6 @@
 
             video.addEventListener('contextmenu', (event) => {
                 event.preventDefault();
-            });
-
-            if (popupCloseButton) {
-                popupCloseButton.addEventListener('click', () => {
-                    closePopup();
-                    video.play().catch(() => {
-                        // Ignore autoplay restrictions after manual close.
-                    });
-                });
-            }
-
-            if (popup) {
-                popup.addEventListener('click', (event) => {
-                    if (event.target === popup || event.target.classList.contains('video-popup__backdrop')) {
-                        closePopup();
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && popup && !popup.hidden) {
-                    closePopup();
-                }
             });
         }
     </script>
