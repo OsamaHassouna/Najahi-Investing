@@ -1435,3 +1435,122 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ================================================ */
+/* ===== NEW PAGE ===== */
+/* =-=-= VIP Course =-=-= */
+
+.inv-vipCourse {
+    min-height: 100svh;
+    background: var(--clr-secondary);
+    padding-block: 70px;
+    text-align: center;
+}
+
+.inv-vipCourse .vipCourse-logo {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.inv-vipCourse .vipCourse-speaker {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 65px;
+    text-align: start;
+}
+
+.inv-vipCourse .vipCourse-speaker .speaker-img {
+    width: 112px;
+    height: 112px;
+    border-radius: 100%;
+    overflow: clip;
+}
+
+.inv-vipCourse .vipCourse-speaker .speaker-img img {
+    scale: 1.8;
+    border-radius: 100%;
+    object-position: -7px 20px;
+    object-fit: cover;
+}
+
+.inv-vipCourse .vipCourse-speaker h2 {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 80px;
+    color: #E2DFFF;
+}
+
+.inv-vipCourse .vipCourse-speaker .speaker-name {
+    font-family: 'Manrope';
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #E2DFFF;
+}
+
+.inv-vipCourse .vipCourse-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+    gap: 3rem;
+    text-align: start;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-details h2 {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 38px;
+    color: #E2DFFF;
+    margin-bottom: 26px;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-table table thead tr th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: white;
+    text-align: start;
+    padding-inline-start: 10px;
+    height: 46px;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-table table tbody tr td {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #E2DFFF;
+    text-align: start;
+    padding-block: 4px;
+    height: 40px;
+    padding-inline-start: 10px;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-table table tbody tr:nth-child(odd) td {
+    background: #D9D9D933;
+    height: 30px;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-table table tbody tr:last-child td {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    line-height: 50px;
+}
+
+.inv-vipCourse .vipCourse-wrapper .vipCourse-form {
+    background: #0B0B2B;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+    .inv-vipCourse .vipCourse-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
